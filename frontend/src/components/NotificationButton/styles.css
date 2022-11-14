@@ -1,15 +1,7 @@
-.dsmeta-red-btn {
-  height: 45px;
-  width: 45px;
-  background: rgba(255, 107, 114, 0.1);
-  border: 1px solid #ff6b72;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.btn-notification {
+  @apply w-11 h-11 flex items-center justify-center rounded-xl border border-red-500 bg-red-500/10 hover:bg-red-500/25 transition-colors duration-200;
 }
 
-.dsmeta-red-btn img {
-  width: 19px;
+.btn-notification img {
+  @apply w-[19px];
 }

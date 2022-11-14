@@ -1,4 +1,5 @@
 import { NotificationButton } from './components/NotificationButton';
+import './styles/global.css';
 
 function App() {
   return (
