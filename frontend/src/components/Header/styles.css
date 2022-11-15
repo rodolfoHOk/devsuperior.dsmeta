@@ -1,0 +1,15 @@
+.header {
+  @apply h-56 flex flex-col items-center justify-center bg-gradient-to-b from-blue-700 to-gray-900 text-white;
+}
+
+.header img {
+  @apply w-[235px];
+}
+
+.header h1 {
+  @apply mt-4 text-2xl font-bold;
+}
+
+.header p {
+  @apply mt-0 text-sm font-light;
+}

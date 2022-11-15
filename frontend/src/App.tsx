@@ -1,10 +1,11 @@
+import { Header } from './components/Header';
 import { NotificationButton } from './components/NotificationButton';
 import './styles/global.css';
 
 function App() {
   return (
     <>
-      <h1>Olá mundo!</h1>
+      <Header />
       <NotificationButton />
     </>
   );
