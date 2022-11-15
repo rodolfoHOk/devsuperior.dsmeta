@@ -7,8 +7,11 @@
 - Typescript
 - Vite Js
 - React Js
+- Tailwind CSS (eu que resolvi usar)
 
 ### Bibliotecas adicionais
+
+- react-datepicker
 
 ## Guia
 
@@ -17,6 +20,8 @@
 ## Links
 
 - Figma: https://www.figma.com/file/EN1zFtk4eY3Jgmpgi9YaMG/DSMeta1?node-id=3%3A16&t=q8vfAyymnhVrKy89-0
+- DatePicker: https://github.com/Hacker0x01/react-datepicker
+- Tailwind CSS: https://tailwindcss.com/docs/installation
 
 ## O que fiz além ?
 
