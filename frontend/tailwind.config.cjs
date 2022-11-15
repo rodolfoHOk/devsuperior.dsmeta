@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     colors: {
       blue: {
+        400: '#676FFF',
         700: '#102347',
       },
       gray: {
@@ -17,8 +18,9 @@ module.exports = {
         500: '#FF6B72',
       },
       zinc: {
-        200: '#676FFF',
+        400: '#384459',
         500: '#283142',
+        600: '#242C3B',
         800: '#1B2531',
       },
       black: '#000000',
@@ -28,6 +30,13 @@ module.exports = {
       fontFamily: {
         sans: 'Roboto, sans-serif',
       },
+      transitionProperty: {
+        outline: 'outline',
+      },
+    },
+    screens: {
+      md: '576px',
+      lg: '992px',
     },
   },
   plugins: [],

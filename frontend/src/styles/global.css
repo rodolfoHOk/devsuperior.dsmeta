@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-black text-white;
+}
+
+main {
+  @apply w-full flex;
+}
+
+main section {
+  @apply w-full my-10 mx-3 flex justify-center;
+}

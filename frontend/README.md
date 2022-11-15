@@ -17,4 +17,8 @@
 ## Links
 
 - Figma: https://www.figma.com/file/EN1zFtk4eY3Jgmpgi9YaMG/DSMeta1?node-id=3%3A16&t=q8vfAyymnhVrKy89-0
-- Projeto HTML e CSS instrutor: https://github.com/acenelio/dsmeta-css
+
+## O que fiz além ?
+
+- Fiz por mim mesmo o HTML e CSS com base no Layout do Figma
+- Usei o Tailwind CSS
