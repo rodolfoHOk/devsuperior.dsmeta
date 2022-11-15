@@ -1,0 +1,31 @@
+.sales-form {
+  @apply max-w-[300px] md:max-w-[536px] lg:max-w-[900px] w-full px-[10px] md:px-8 lg:px-9 py-8 flex flex-col bg-zinc-500 rounded-xl;
+}
+
+.sales-form h2 {
+  @apply font-bold text-2xl text-blue-400;
+}
+
+.sales-form form {
+  @apply mt-5 flex flex-col gap-6;
+}
+
+.sales-form form .data-inputs {
+  @apply grid grid-flow-row grid-cols-1 lg:grid-cols-2 gap-3;
+}
+
+.data-inputs > div {
+  @apply flex flex-col gap-1;
+}
+
+.data-inputs label {
+  @apply font-medium text-base text-gray-200 ml-1;
+}
+
+.data-inputs span {
+  @apply font-light text-sm text-red-500 ml-1;
+}
+
+.sales-form form .btn-container {
+  @apply flex lg:justify-end;
+}
