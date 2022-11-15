@@ -61,26 +61,42 @@ export function SalesForm() {
         sales: '',
         total: '',
       };
+
       if (!values.date) {
         errors.date = 'data é obrigatória';
       } else if (!(values.date instanceof Date)) {
         errors.date = 'formato da data inválido';
       }
+
       if (!values.seller_id) {
         errors.seller_id = 'selecione um vendedor';
       }
+
       if (!values.visits) {
         errors.visits = 'número de visitas é obrigatório';
+      } else if (isNaN(values.visits)) {
+        errors.visits = 'número de visitas deve ser um número';
+      } else if (!Number.isInteger(Number(values.visits))) {
+        errors.visits = 'número de visitas deve ser um número inteiro';
       } else if (values.visits <= 0) {
         errors.visits = 'número de visitas deve ser maior que zero';
       }
+
       if (!values.sales) {
         errors.sales = 'número de vendas é obrigatório';
+      } else if (isNaN(values.sales)) {
+        errors.sales = 'número de vendas deve ser um número';
+      } else if (!Number.isInteger(Number(values.sales))) {
+        console.log('values.sales', values.sales);
+        errors.sales = 'número de vendas deve ser um número inteiro';
       } else if (values.sales <= 0) {
         errors.sales = 'número de vendas deve ser maior que zero';
       }
+
       if (!values.total) {
         errors.total = 'valor total é obrigatório';
+      } else if (isNaN(values.total)) {
+        errors.total = 'total de vendas deve ser um número';
       } else if (values.total <= 0) {
         errors.total = 'valor total deve ser maior que zero';
       }
@@ -138,7 +154,7 @@ export function SalesForm() {
             <label>Visitas</label>
             <Input
               name="visits"
-              type="number"
+              type="text"
               placeholder="Número de visitas"
               value={values.visits}
               onChange={handleChange}
@@ -150,7 +166,7 @@ export function SalesForm() {
             <label>Vendas</label>
             <Input
               name="sales"
-              type="number"
+              type="text"
               placeholder="Número de vendas"
               value={values.sales}
               onChange={handleChange}
@@ -162,7 +178,7 @@ export function SalesForm() {
             <label>Total (R$)</label>
             <Input
               name="total"
-              type="number"
+              type="text"
               placeholder="Valor total"
               value={values.total}
               onChange={handleChange}
