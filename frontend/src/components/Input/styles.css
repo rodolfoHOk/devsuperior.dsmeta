@@ -1,0 +1,3 @@
+.app-input {
+  @apply h-12 w-[280px] md:w-[300px] px-6 rounded-xl bg-zinc-800 border border-zinc-400 text-lg text-gray-300 placeholder:text-gray-300/30 outline-none outline-offset-0 focus:outline focus:outline-blue-400 transition-outline duration-200;
+}

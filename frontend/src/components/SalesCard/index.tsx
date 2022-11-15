@@ -5,6 +5,7 @@ import { NotificationButton } from '../NotificationButton';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
+import '../Input/styles.css';
 
 export function SalesCard() {
   registerLocale('ptBR', ptBR);
@@ -21,7 +22,7 @@ export function SalesCard() {
 
       <div className="form">
         <DatePicker
-          className="date-input"
+          className="app-input"
           locale="ptBR"
           dateFormat="dd/MM/yyyy"
           selected={initialDate}
@@ -29,7 +30,7 @@ export function SalesCard() {
         />
 
         <DatePicker
-          className="date-input"
+          className="app-input"
           locale="ptBR"
           dateFormat="dd/MM/yyyy"
           selected={finalDate}

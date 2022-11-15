@@ -10,10 +10,6 @@
   @apply flex flex-col gap-4 mt-5 mb-4;
 }
 
-.sales-card .form .date-input {
-  @apply h-12 w-[280px] md:w-[300px] px-6 rounded-xl bg-zinc-800 border border-zinc-400 text-lg text-gray-300 placeholder:text-gray-300/30 outline-none outline-offset-0 focus:outline focus:outline-blue-400 transition-outline duration-200;
-}
-
 .sales-card table {
   @apply w-full border-spacing-0 border-collapse;
 }
