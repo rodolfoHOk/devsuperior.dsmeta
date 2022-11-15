@@ -12,6 +12,7 @@
 ### Bibliotecas adicionais
 
 - react-datepicker
+- date-fns
 
 ## Guia
 
@@ -27,3 +28,4 @@
 
 - Fiz por mim mesmo o HTML e CSS com base no Layout do Figma
 - Usei o Tailwind CSS
+- Mudei o DataPicker para a localização pt-BR usando o date-fns

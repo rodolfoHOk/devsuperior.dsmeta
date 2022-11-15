@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import ptBR from 'date-fns/locale/pt-BR';
 import { NotificationButton } from '../NotificationButton';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
 
 export function SalesCard() {
+  registerLocale('ptBR', ptBR);
+
   const minDate = new Date(new Date().setDate(new Date().getDate() - 365));
   const maxDate = new Date();
 
@@ -19,16 +22,18 @@ export function SalesCard() {
       <div className="form">
         <DatePicker
           className="date-input"
+          locale="ptBR"
+          dateFormat="dd/MM/yyyy"
           selected={initialDate}
           onChange={(date: Date) => setInitialDate(date)}
-          dateFormat="dd/MM/yyyy"
         />
 
         <DatePicker
           className="date-input"
+          locale="ptBR"
+          dateFormat="dd/MM/yyyy"
           selected={finalDate}
           onChange={(date: Date) => setFinalDate(date)}
-          dateFormat="dd/MM/yyyy"
         />
       </div>
 
