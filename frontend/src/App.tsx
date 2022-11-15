@@ -1,17 +1,18 @@
+import { BrowserRouter } from 'react-router-dom';
 import { Header } from './components/Header';
-import { SalesCard } from './components/SalesCard';
+import { Router } from './Router';
 import './styles/global.css';
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <main>
         <section>
-          <SalesCard />
+          <Router />
         </section>
       </main>
-    </>
+    </BrowserRouter>
   );
 }
 
