@@ -6,7 +6,8 @@
 
 - Java
 - Spring Boot
-- H2
+- H2 Database
+- Twilio SMS
 
 ### Bibliotecas
 
@@ -17,6 +18,7 @@
 - H2 Database
 - Spring Dev Tools
 - Lombok
+- twilio (sdk)
 
 ## O que fiz além?
 
