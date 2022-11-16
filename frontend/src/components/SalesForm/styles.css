@@ -14,18 +14,18 @@
   @apply grid grid-flow-row grid-cols-1 lg:grid-cols-2 gap-3;
 }
 
-.data-inputs > div {
+.sales-form .data-inputs > div {
   @apply flex flex-col gap-1;
 }
 
-.data-inputs label {
+.sales-form .data-inputs label {
   @apply font-medium text-base text-gray-200 ml-1;
 }
 
-.data-inputs span {
+.sales-form .data-inputs span {
   @apply font-light text-sm text-red-500 ml-1;
 }
 
 .sales-form form .btn-container {
-  @apply flex lg:justify-end;
+  @apply flex gap-4;
 }

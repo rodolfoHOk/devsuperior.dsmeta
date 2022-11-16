@@ -42,6 +42,7 @@ export function SalesForm() {
     values,
     errors,
     isSubmitting,
+    clear,
     setFieldValue,
     handleChange,
     handleSubmit,
@@ -118,7 +119,7 @@ export function SalesForm() {
       <form onSubmit={handleSubmit}>
         <div className="data-inputs">
           <div>
-            <label>Data</label>
+            <label htmlFor="date">Data</label>
             <DatePicker
               name="date"
               className="app-input"
@@ -131,7 +132,7 @@ export function SalesForm() {
           </div>
 
           <div>
-            <label>Vendedor</label>
+            <label htmlFor="seller_id">Vendedor</label>
             <select
               name="seller_id"
               className="app-input"
@@ -151,7 +152,7 @@ export function SalesForm() {
           </div>
 
           <div>
-            <label>Visitas</label>
+            <label htmlFor="visits">Visitas</label>
             <Input
               name="visits"
               type="text"
@@ -163,7 +164,7 @@ export function SalesForm() {
           </div>
 
           <div>
-            <label>Vendas</label>
+            <label htmlFor="sales">Vendas</label>
             <Input
               name="sales"
               type="text"
@@ -175,7 +176,7 @@ export function SalesForm() {
           </div>
 
           <div>
-            <label>Total (R$)</label>
+            <label htmlFor="total">Total (R$)</label>
             <Input
               name="total"
               type="text"
@@ -188,7 +189,13 @@ export function SalesForm() {
         </div>
 
         <div className="btn-container">
-          <Button disabled={isSubmitting}>Cadastrar</Button>
+          <Button type="button" disabled={isSubmitting} onClick={clear}>
+            Limpar
+          </Button>
+
+          <Button type="submit" disabled={isSubmitting}>
+            Cadastrar
+          </Button>
         </div>
       </form>
     </div>
