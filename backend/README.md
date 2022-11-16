@@ -17,3 +17,9 @@
 - H2 Database
 - Spring Dev Tools
 - Lombok
+
+## O que fiz além?
+
+- Usei o Lombok
+- Criei entidade user
+- Criei entidade seller e substitui o seller_name da entidade sale pela entidade seller
