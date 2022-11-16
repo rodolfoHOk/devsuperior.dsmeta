@@ -1,9 +1,13 @@
+import { ButtonHTMLAttributes } from 'react';
 import icon from '../../assets/img/notification-icon.svg';
 import './styles.css';
 
-export function NotificationButton() {
+interface NotificationButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export function NotificationButton(props: NotificationButtonProps) {
   return (
-    <button className="btn-notification">
+    <button {...props} className="btn-notification">
       <img src={icon} alt="Notificar" />
     </button>
   );

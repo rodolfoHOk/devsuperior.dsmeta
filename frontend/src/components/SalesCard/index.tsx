@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
+import { CashRegisterButton } from '../CashRegisterButton';
 import { NotificationButton } from '../NotificationButton';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,6 +11,8 @@ import '../Input/styles.css';
 
 export function SalesCard() {
   registerLocale('ptBR', ptBR);
+
+  const navigate = useNavigate();
 
   const minDate = new Date(new Date().setDate(new Date().getDate() - 365));
   const maxDate = new Date();
@@ -19,6 +23,10 @@ export function SalesCard() {
   return (
     <div className="sales-card">
       <h2>Vendas</h2>
+
+      <div className="add-sale">
+        <CashRegisterButton onClick={() => navigate('/cadastro')} />
+      </div>
 
       <div className="form">
         <DatePicker

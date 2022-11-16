@@ -14,6 +14,7 @@
 - react-datepicker
 - date-fns
 - react-router-dom
+- react-icons
 
 ## Guia
 

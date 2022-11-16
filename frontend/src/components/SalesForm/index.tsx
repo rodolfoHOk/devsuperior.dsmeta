@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
 import '../Input/styles.css';
 import './styles.css';
 import { Input } from '../Input';
 import { Button } from '../Button';
+import { BackButton } from '../BackButton';
 import { useForm, UseFormErrors } from '../../hooks/useForm';
 
 interface Seller {
@@ -22,6 +24,8 @@ interface SaleFormData {
 
 export function SalesForm() {
   registerLocale('ptBR', ptBR);
+
+  const navigate = useNavigate();
 
   const [sellers, setSellers] = useState<Seller[]>([
     {
@@ -115,6 +119,10 @@ export function SalesForm() {
   return (
     <div className="sales-form">
       <h2>Cadastro de vendas</h2>
+
+      <div className="back-btn-container">
+        <BackButton onClick={() => navigate('/')} />
+      </div>
 
       <form onSubmit={handleSubmit}>
         <div className="data-inputs">
