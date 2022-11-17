@@ -10,7 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.devsuperior.dsmeta.domain.entities.Sale;
+import br.com.devsuperior.dsmeta.domain.entities.Seller;
+import br.com.devsuperior.dsmeta.domain.exceptions.EntityNotFoundException;
 import br.com.devsuperior.dsmeta.domain.repositories.SaleRepository;
+import br.com.devsuperior.dsmeta.domain.repositories.SellerRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -18,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class SaleService {
 	
 	private final SaleRepository saleRepository;
+	private final SellerRepository sellerRepository;
 	
 	public Page<Sale> findSales(String initialDate, String finalDate, Pageable pageable) {
 		
@@ -27,6 +31,15 @@ public class SaleService {
 		LocalDate last = finalDate.equals("") ? today : LocalDate.parse(finalDate);
 		
 		return saleRepository.findSales(initial, last, pageable);
+	}
+
+	public Sale create(Sale newSale) {
+		Seller foundedSeller = sellerRepository.findById(newSale.getSeller().getId())
+				.orElseThrow(() -> new EntityNotFoundException("Sale not found with informed id"));
+		
+		newSale.setSeller(foundedSeller);
+		
+		return saleRepository.save(newSale);
 	}
 	
 }

@@ -1,4 +1,4 @@
-package br.com.devsuperior.dsmeta.config;
+package br.com.devsuperior.dsmeta.config.security;
 
 import java.util.Arrays;
 

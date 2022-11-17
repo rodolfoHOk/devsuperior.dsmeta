@@ -16,13 +16,20 @@
 - Spring Security
 - Spring Data JPA
 - H2 Database
-- Spring Dev Tools
-- Lombok
 - twilio (sdk)
+- Lombok
+- Spring Dev Tools
+- Spring I/O Validation
+- ModelMapper
+- Springdoc OpenAPI UI
 
 ## O que fiz além?
 
 - Usei o Lombok
 - Criei entidade user
 - Criei entidade seller e substitui o seller_name da entidade sale pela entidade seller
-- Criei repositories de user e seller
+- Criei repositórios de user e seller
+- Criei end-point de criação de venda (sale)
+- Usei o ModelMapper para mapeamento de DTO para Entidade
+- Usei o Spring I/O validation para validar o DTO
+- Adicionei documentação OpenAPI (Swagger UI)
