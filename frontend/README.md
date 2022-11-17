@@ -31,3 +31,8 @@
 - Fiz por mim mesmo o HTML e CSS com base no Layout do Figma
 - Usei o Tailwind CSS
 - Mudei o DataPicker para a localização pt-BR usando o date-fns
+- Adicionei o react router dom e implementei rotas para homepage, cadastro de venda e login
+- Criei o hook useForm para usar nos formulários
+- Criei página de cadastro de venda com validação dos dados
+- Criei página de login com validação dos dados
+- Adicionei botão na listagem de vendas para ir para cadastro de venda usando o hook useNavigate
