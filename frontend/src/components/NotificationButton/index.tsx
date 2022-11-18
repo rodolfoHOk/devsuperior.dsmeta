@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
+import { toast } from 'react-toastify';
 import icon from '../../assets/img/notification-icon.svg';
 import { api } from '../../services/api';
 import './styles.css';
@@ -13,9 +14,11 @@ export function NotificationButton({
   ...rest
 }: NotificationButtonProps) {
   function handleClick(id: number) {
-    api
-      .get(`/sales/${id}/notification`)
-      .then((response) => console.log('sucesso!'));
+    api.get(`/sales/${id}/notification`).then((response) =>
+      toast.info('SMS envidado com sucesso', {
+        theme: 'colored',
+      })
+    );
   }
 
   return (
