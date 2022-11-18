@@ -10,6 +10,8 @@ import './styles.css';
 import '../Input/styles.css';
 
 import { api } from '../../services/api';
+import { Sale } from '../../models/sale';
+import { Page } from '../../models/page';
 
 export function SalesCard() {
   registerLocale('ptBR', ptBR);
@@ -22,8 +24,12 @@ export function SalesCard() {
   const [initialDate, setInitialDate] = useState(minDate);
   const [finalDate, setFinalDate] = useState(maxDate);
 
+  const [sales, setSales] = useState<Sale[]>([]);
+
   useEffect(() => {
-    api.get('/sales').then((response) => console.log(response.data));
+    api
+      .get<Page<Sale>>('/sales')
+      .then((response) => setSales(response.data.content));
   }, []);
 
   return (
@@ -67,47 +73,23 @@ export function SalesCard() {
           </thead>
 
           <tbody>
-            <tr>
-              <td className="show-lg">{'#' + '341'}</td>
-              <td className="show-md">{'28/06/2022'}</td>
-              <td>{'Anakin'}</td>
-              <td className="show-lg">{'15'}</td>
-              <td className="show-lg">{'11'}</td>
-              <td>{'R$ 55300.00'}</td>
-              <td>
-                <div className="btn-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td className="show-lg">{'#' + '341'}</td>
-              <td className="show-md">{'28/06/2022'}</td>
-              <td>{'Anakin'}</td>
-              <td className="show-lg">{'15'}</td>
-              <td className="show-lg">{'11'}</td>
-              <td>{'R$ 55300.00'}</td>
-              <td>
-                <div className="btn-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
-
-            <tr>
-              <td className="show-lg">{'#' + '341'}</td>
-              <td className="show-md">{'28/06/2022'}</td>
-              <td>{'Anakin'}</td>
-              <td className="show-lg">{'15'}</td>
-              <td className="show-lg">{'11'}</td>
-              <td>{'R$ 55300.00'}</td>
-              <td>
-                <div className="btn-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
+            {sales.map((sale) => (
+              <tr key={sale.id}>
+                <td className="show-lg">{sale.id}</td>
+                <td className="show-md">
+                  {new Date(sale.date).toLocaleDateString()}
+                </td>
+                <td>{sale.seller.name}</td>
+                <td className="show-lg">{sale.visited}</td>
+                <td className="show-lg">{sale.deals}</td>
+                <td>{`R$ ${sale.amount.toFixed(2)}`}</td>
+                <td>
+                  <div className="btn-container">
+                    <NotificationButton />
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
