@@ -27,10 +27,13 @@ export function SalesCard() {
   const [sales, setSales] = useState<Sale[]>([]);
 
   useEffect(() => {
+    const iDate = initialDate.toISOString().slice(0, 10);
+    const fDate = finalDate.toISOString().slice(0, 10);
+
     api
-      .get<Page<Sale>>('/sales')
+      .get<Page<Sale>>(`/sales?initialDate=${iDate}&finalDate=${fDate}`)
       .then((response) => setSales(response.data.content));
-  }, []);
+  }, [initialDate, finalDate]);
 
   return (
     <div className="sales-card">
