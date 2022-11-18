@@ -15,6 +15,7 @@
 - date-fns
 - react-router-dom
 - react-icons
+- axios
 
 ## Guia
 

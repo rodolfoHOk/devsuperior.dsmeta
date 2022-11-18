@@ -33,3 +33,9 @@
 - Usei o ModelMapper para mapeamento de DTO para Entidade
 - Usei o Spring I/O validation para validar o DTO
 - Adicionei documentação OpenAPI (Swagger UI)
+
+## Build and Run
+
+- ./mvnw package -Dmaven.test.skip
+- set environment variables: export TWILIO_KEY= TWILIO_PHONE_FROM= TWILIO_PHONE_TO= TWILIO_SID=
+- java -jar target/dsmeta-0.0.1-SNAPSHOT.jar

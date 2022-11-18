@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -8,6 +8,8 @@ import { NotificationButton } from '../NotificationButton';
 import 'react-datepicker/dist/react-datepicker.css';
 import './styles.css';
 import '../Input/styles.css';
+
+import { api } from '../../services/api';
 
 export function SalesCard() {
   registerLocale('ptBR', ptBR);
@@ -19,6 +21,10 @@ export function SalesCard() {
 
   const [initialDate, setInitialDate] = useState(minDate);
   const [finalDate, setFinalDate] = useState(maxDate);
+
+  useEffect(() => {
+    api.get('/sales').then((response) => console.log(response.data));
+  }, []);
 
   return (
     <div className="sales-card">
