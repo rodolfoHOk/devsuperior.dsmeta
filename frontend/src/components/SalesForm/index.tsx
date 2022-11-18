@@ -8,11 +8,7 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import { BackButton } from '../BackButton';
 import { useForm, UseFormErrors } from '../../hooks/useForm';
-
-interface Seller {
-  id: string;
-  name: string;
-}
+import { Seller } from '../../models/seller';
 
 interface SaleFormData {
   date: Date;
@@ -27,20 +23,7 @@ export function SalesForm() {
 
   const navigate = useNavigate();
 
-  const [sellers, setSellers] = useState<Seller[]>([
-    {
-      id: 'abc123',
-      name: 'Anakin',
-    },
-    {
-      id: 'def456',
-      name: 'Chewbacca',
-    },
-    {
-      id: 'ghi789',
-      name: 'Leia',
-    },
-  ]);
+  const [sellers, setSellers] = useState<Seller[]>([]);
 
   const {
     values,

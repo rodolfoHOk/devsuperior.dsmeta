@@ -21,7 +21,8 @@ public class SpringDocConfig {
 						.description("REST API DS Meta")
 				)
 				.tags(Arrays.asList(
-					new Tag().name("Sales").description("Management sales")
+					new Tag().name("Sales").description("Management sales"),
+					new Tag().name("Sellers").description("Management sellers")
 				));
 	}
 }
