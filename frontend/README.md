@@ -37,3 +37,5 @@
 - Criei página de cadastro de venda com validação dos dados
 - Criei página de login com validação dos dados
 - Adicionei botão na listagem de vendas para ir para cadastro de venda usando o hook useNavigate
+
+## pausa > 49:52
