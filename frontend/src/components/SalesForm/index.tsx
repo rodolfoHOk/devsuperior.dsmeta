@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
@@ -9,13 +9,17 @@ import { Button } from '../Button';
 import { BackButton } from '../BackButton';
 import { useForm, UseFormErrors } from '../../hooks/useForm';
 import { Seller } from '../../models/seller';
+import { api } from '../../services/api';
+import { SaleInput } from '../../models/saleInput';
+import { Sale } from '../../models/sale';
+import { toast } from 'react-toastify';
 
 interface SaleFormData {
   date: Date;
   seller_id: string | '';
-  visits: number | '';
-  sales: number | '';
-  total: number | '';
+  visited: number | '';
+  deals: number | '';
+  amount: number | '';
 }
 
 export function SalesForm() {
@@ -37,17 +41,17 @@ export function SalesForm() {
     initialValues: {
       date: new Date(),
       seller_id: '',
-      visits: '',
-      sales: '',
-      total: '',
+      visited: '',
+      deals: '',
+      amount: '',
     },
     validate: (values) => {
       let errors: UseFormErrors<SaleFormData> = {
         date: '',
         seller_id: '',
-        visits: '',
-        sales: '',
-        total: '',
+        visited: '',
+        deals: '',
+        amount: '',
       };
 
       if (!values.date) {
@@ -60,44 +64,73 @@ export function SalesForm() {
         errors.seller_id = 'selecione um vendedor';
       }
 
-      if (!values.visits) {
-        errors.visits = 'número de visitas é obrigatório';
-      } else if (isNaN(values.visits)) {
-        errors.visits = 'número de visitas deve ser um número';
-      } else if (!Number.isInteger(Number(values.visits))) {
-        errors.visits = 'número de visitas deve ser um número inteiro';
-      } else if (values.visits <= 0) {
-        errors.visits = 'número de visitas deve ser maior que zero';
+      if (!values.visited) {
+        errors.visited = 'número de visitas é obrigatório';
+      } else if (isNaN(values.visited)) {
+        errors.visited = 'número de visitas deve ser um número';
+      } else if (!Number.isInteger(Number(values.visited))) {
+        errors.visited = 'número de visitas deve ser um número inteiro';
+      } else if (values.visited <= 0) {
+        errors.visited = 'número de visitas deve ser maior que zero';
       }
 
-      if (!values.sales) {
-        errors.sales = 'número de vendas é obrigatório';
-      } else if (isNaN(values.sales)) {
-        errors.sales = 'número de vendas deve ser um número';
-      } else if (!Number.isInteger(Number(values.sales))) {
-        console.log('values.sales', values.sales);
-        errors.sales = 'número de vendas deve ser um número inteiro';
-      } else if (values.sales <= 0) {
-        errors.sales = 'número de vendas deve ser maior que zero';
+      if (!values.deals) {
+        errors.deals = 'número de vendas é obrigatório';
+      } else if (isNaN(values.deals)) {
+        errors.deals = 'número de vendas deve ser um número';
+      } else if (!Number.isInteger(Number(values.deals))) {
+        console.log('values.deals', values.deals);
+        errors.deals = 'número de vendas deve ser um número inteiro';
+      } else if (values.deals <= 0) {
+        errors.deals = 'número de vendas deve ser maior que zero';
       }
 
-      if (!values.total) {
-        errors.total = 'valor total é obrigatório';
-      } else if (isNaN(values.total)) {
-        errors.total = 'total de vendas deve ser um número';
-      } else if (values.total <= 0) {
-        errors.total = 'valor total deve ser maior que zero';
+      if (!values.amount) {
+        errors.amount = 'valor total é obrigatório';
+      } else if (isNaN(values.amount)) {
+        errors.amount = 'total de vendas deve ser um número';
+      } else if (values.amount <= 0) {
+        errors.amount = 'valor total deve ser maior que zero';
       }
       return errors;
     },
-    onSubmit: (values, clear, setIsSubmitting) => {
-      setTimeout(() => {
-        console.log(values);
-        clear();
-        setIsSubmitting(false);
-      }, 1000);
+    onSubmit: async (values, clear, setIsSubmitting) => {
+      const saleInput: SaleInput = {
+        date: values.date.toISOString().slice(0, 10),
+        visited: values.visited as number,
+        deals: values.deals as number,
+        amount: values.amount as number,
+        seller: {
+          id: values.seller_id,
+        },
+      };
+
+      const response = await api.post<Sale>('/sales', saleInput, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.data.id) {
+        toast.success('Venda cadastrada com sucesso', {
+          theme: 'colored',
+        });
+      }
+
+      clear();
+      setIsSubmitting(false);
     },
   });
+
+  useEffect(() => {
+    api.get<Seller[]>('/sellers').then((response) => {
+      response.data.sort((a, b) =>
+        a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+      );
+
+      setSellers(response.data);
+    });
+  }, []);
 
   return (
     <div className="sales-form">
@@ -145,37 +178,37 @@ export function SalesForm() {
           <div>
             <label htmlFor="visits">Visitas</label>
             <Input
-              name="visits"
+              name="visited"
               type="text"
               placeholder="Número de visitas"
-              value={values.visits}
+              value={values.visited}
               onChange={handleChange}
             />
-            {errors?.visits && <span>* {errors.visits}</span>}
+            {errors?.visited && <span>* {errors.visited}</span>}
           </div>
 
           <div>
             <label htmlFor="sales">Vendas</label>
             <Input
-              name="sales"
+              name="deals"
               type="text"
               placeholder="Número de vendas"
-              value={values.sales}
+              value={values.deals}
               onChange={handleChange}
             />
-            {errors?.sales && <span>* {errors.sales}</span>}
+            {errors?.deals && <span>* {errors.deals}</span>}
           </div>
 
           <div>
             <label htmlFor="total">Total (R$)</label>
             <Input
-              name="total"
+              name="amount"
               type="text"
               placeholder="Valor total"
-              value={values.total}
+              value={values.amount}
               onChange={handleChange}
             />
-            {errors?.total && <span>* {errors.total}</span>}
+            {errors?.amount && <span>* {errors.amount}</span>}
           </div>
         </div>
 

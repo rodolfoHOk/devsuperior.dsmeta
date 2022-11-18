@@ -33,6 +33,7 @@
 - Usei o ModelMapper para mapeamento de DTO para Entidade
 - Usei o Spring I/O validation para validar o DTO
 - Adicionei documentação OpenAPI (Swagger UI)
+- Adicionei end-point para listagem dos vendedores (sellers)
 
 ## Build and Run
 
