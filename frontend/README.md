@@ -16,6 +16,7 @@
 - react-router-dom
 - react-icons
 - axios
+- react-toastify
 
 ## Guia
 
