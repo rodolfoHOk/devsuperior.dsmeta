@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import ptBR from 'date-fns/locale/pt-BR';
+import ReactPaginate from 'react-paginate';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { CashRegisterButton } from '../CashRegisterButton';
 import { NotificationButton } from '../NotificationButton';
 
@@ -24,16 +26,23 @@ export function SalesCard() {
   const [initialDate, setInitialDate] = useState(minDate);
   const [finalDate, setFinalDate] = useState(maxDate);
 
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [pageSales, setPageSales] = useState<Page<Sale> | null>(null);
+  const [page, setPage] = useState(0);
+
+  function handlePageSelected(pageSelected: number) {
+    setPage(pageSelected);
+  }
 
   useEffect(() => {
     const iDate = initialDate.toISOString().slice(0, 10);
     const fDate = finalDate.toISOString().slice(0, 10);
 
     api
-      .get<Page<Sale>>(`/sales?initialDate=${iDate}&finalDate=${fDate}`)
-      .then((response) => setSales(response.data.content));
-  }, [initialDate, finalDate]);
+      .get<Page<Sale>>(
+        `/sales?initialDate=${iDate}&finalDate=${fDate}&page=${page}`
+      )
+      .then((response) => setPageSales(response.data));
+  }, [initialDate, finalDate, page]);
 
   return (
     <div className="sales-card">
@@ -76,7 +85,7 @@ export function SalesCard() {
           </thead>
 
           <tbody>
-            {sales.map((sale) => (
+            {pageSales?.content.map((sale) => (
               <tr key={sale.id}>
                 <td className="show-lg">{sale.id}</td>
                 <td className="show-md">
@@ -95,6 +104,20 @@ export function SalesCard() {
             ))}
           </tbody>
         </table>
+
+        {pageSales && (
+          <ReactPaginate
+            containerClassName="pagination"
+            activeClassName="active"
+            disabledClassName="disabled"
+            marginPagesDisplayed={1}
+            pageRangeDisplayed={2}
+            pageCount={pageSales.totalPages}
+            onPageChange={(e) => handlePageSelected(e.selected)}
+            previousLabel={<FiChevronLeft size={16} />}
+            nextLabel={<FiChevronRight size={16} />}
+          />
+        )}
       </div>
     </div>
   );

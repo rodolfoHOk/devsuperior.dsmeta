@@ -17,6 +17,7 @@
 - react-icons
 - axios
 - react-toastify
+- react-paginate
 
 ## Guia
 
@@ -38,6 +39,7 @@
 - Criei página de cadastro de venda com validação dos dados
 - Criei página de login com validação dos dados
 - Adicionei botão na listagem de vendas para ir para cadastro de venda usando o hook useNavigate
+- Adicionei paginação na listagem de vendas
 
 ## Deploy url
 

@@ -49,3 +49,19 @@
 .show-lg {
   @apply hidden lg:table-cell;
 }
+
+.pagination {
+  @apply flex justify-center gap-2 mt-3;
+}
+
+.pagination li a {
+  @apply min-w-[40px] min-h-[40px] flex justify-center items-center px-2 py-1 bg-zinc-400 hover:bg-zinc-400/70 rounded-xl transition-colors duration-200;
+}
+
+.pagination .active a {
+  @apply bg-blue-400 hover:bg-blue-400 cursor-default;
+}
+
+.pagination .disabled a {
+  @apply bg-zinc-600 hover:bg-zinc-600 cursor-not-allowed;
+}
