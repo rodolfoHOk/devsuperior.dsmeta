@@ -1,15 +1,15 @@
-# Semana Spring React / Backend
+# 🚀 Semana Spring React / Backend 🚀
 
 > DevSuperior
 
-## Tecnologias
+## 👨‍💻 Principais Tecnologias 👩‍💻
 
 - Java
 - Spring Boot
 - H2 Database
 - Twilio SMS
 
-### Bibliotecas
+### 📚 Bibliotecas adicionais 🗃️
 
 - Java 17
 - Spring WEB
@@ -23,7 +23,7 @@
 - ModelMapper
 - Springdoc OpenAPI UI
 
-## O que fiz além?
+## ➕ O que fiz além ✨
 
 - Usei o Lombok
 - Criei entidade user
@@ -35,7 +35,7 @@
 - Adicionei documentação OpenAPI (Swagger UI)
 - Adicionei end-point para listagem dos vendedores (sellers)
 
-## Build and Run
+## 🔥 Build and Run 🏃
 
 - ./mvnw package -Dmaven.test.skip
 - set environment variables: export TWILIO_KEY= TWILIO_PHONE_FROM= TWILIO_PHONE_TO= TWILIO_SID=
